@@ -1,0 +1,31 @@
+database:
+  driverClass: org.h2.Driver
+  user: polten
+  password: polten
+  url: jdbc:h2:./buildTestPolten/h2db;AUTO_SERVER=TRUE
+  properties:
+    charSet: UTF-8
+    hibernate.dialect: org.hibernate.dialect.H2Dialect
+    hibernate.hbm2ddl.auto: create
+
+server:
+  applicationConnectors:
+    - type: http
+      port: 8585
+  adminConnectors:
+    - type: http
+      port: 8586
+
+# Logging settings.
+logging:
+
+  # The default level of all loggers. Can be OFF, ERROR, WARN, INFO, DEBUG, TRACE, or ALL.
+  level: INFO
+
+  # Logger-specific levels.
+  loggers:
+    com.yunspace.dropwizard: DEBUG
+    org.hibernate.SQL: ALL
+
+  appenders:
+    - type: console
