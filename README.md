@@ -52,10 +52,17 @@ https://host:8080/status/migrate --> to setup some test vehicles into applciatio
 https://host:8080/status/clear --> To clear test data from application
 
 
-## sample server startup and request served tested OK
+## sample server startup and end points tested OK
+INFO  [2018-05-04 13:42:57,455] io.dropwizard.jersey.DropwizardResourceConfig: The following paths were found for the configured resources:
 
+    GET     /status (statusAppl.restapi.VehiclesMicroServiceResource)
+    GET     /status/clear (statusAppl.restapi.VehiclesMicroServiceResource)
+    GET     /status/migrate (statusAppl.restapi.VehiclesMicroServiceResource)
+    POST    /status/update (statusAppl.restapi.VehiclesMicroServiceResource)
 
-C:\jai\ape>java -cp restaurantAPI-1.0-SNAPSHOT.jar pizza.app.RestaurentApplication server myservice.yaml
+INFO  [2018-05-04 13:42:57,549] org.eclipse.jetty.server.AbstractConnector: Started admin@10d9c41{HTTP/1.1,[http/1.1]}{0.0.0.0:8081}
+INFO  [2018-05-04 13:42:57,549] org.eclipse.jetty.server.Server: Started @6469ms
+
 
 ## Added HEALTH CHECKS -- with Unhealthy applictaion example
 This microservice contains a basic health check to check the preconditions metrices in PRODUCTION ENV if the conditions exist to get expected result
@@ -81,9 +88,14 @@ click above healthcheck link to see example when one of conditions are withdrawn
 
 ## Limitations & Assumptions
 1. In memory database H2 is used.
-2. Bacekend Microservice secuirty features are not implemented.
+2. Backend Microservice secuirty features are not implemented.
 3. Also CORS setting has been enabled in the server side.
 4. Simulation of vehicles sending status from angular UI to service calls every minute.
+5. This is assumed that both the SPA and microservice will be deployed on same server not for testing in first version.
+    So There are hard coded host names for localhost direct url for microservice in SPA integration service layer, will be improved in next version to have the 
+6. Full screen functionality is not bydefault at present as there are not real vehicles at present 
+  & User first time need to do Admin setting and then can click full screen for the constant reporting from the screen.
+	
 
 
 
